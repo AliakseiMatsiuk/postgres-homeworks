@@ -18,13 +18,13 @@ with psycopg2.connect(host='localhost',database='north',user='postgres',password
             next(orders_data)
 
             for customers in customers_data:
-                cur.execute("INSRT INTO customers VALUES (%s, %s, %s)", customers)
+                cur.execute("INSERT INTO customers VALUES (%s, %s, %s)", customers)
 
             for employee in employees_data:
-                cur.execute("INSRT INTO employees VALUES (%s, %s, %s, %s, %s)", employee)
+                cur.execute("INSERT INTO employees VALUES (%s, %s, %s, %s, %s)", employee)
 
             for order in orders_data:
-                cur.execute("INSRT INTO orders VALUES (%s, %s, %s, %s, %s)", order)
+                cur.execute("INSERT INTO orders VALUES (%s, %s, %s, %s, %s)", order)
 
 conn.close()
 
