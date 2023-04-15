@@ -22,9 +22,10 @@ WHERE discontinued = '0' AND units_in_stock < '25' AND category_name in ('Dairy 
 ORDER BY units_in_stock
 
 -- 3. Список компаний заказчиков (company_name из табл customers), не сделавших ни одного заказа
-SELECT company_name 
-FROM customers 
-WHERE customer_id NOT IN (SELECT customer_id FROM orders)
+SELECT c.customer_id, c.company_name
+FROM customers c 
+LEFT JOIN orders o ON c.customer_id = o.customer_id 
+WHERE o.order_id IS NULL;
 
 
 -- 4. уникальные названия продуктов, которых заказано ровно 10 единиц (количество заказанных единиц см в колонке quantity табл order_details)
